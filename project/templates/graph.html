@@ -1,0 +1,12 @@
+{% extends "foundation.html" %}
+
+{% block title %}Analytics{% endblock %}
+
+{% block main %}
+    <div id="Bench" style="height: 300px; width: 100%;"></div>
+    <div id="ovpress" style="height: 300px; width: 100%;"></div>
+    <div id="Deadlift" style="height: 300px; width: 100%;"></div>
+    <div id="Squat" style="height: 300px; width: 100%;"></div>
+    <script src="{{ url_for('static', filename='warrior.js') }}"></script>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+{% endblock %}

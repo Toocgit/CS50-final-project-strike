@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta -->
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="initial-scale=1, width=device-width"/>
+        <!-- documentation at http://getbootstrap.com/ -->
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+        <link href="{{ url_for('static', filename='getstarted.css') }}" rel="stylesheet"/>
+        <!-- code okay -->
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <!-- code okay -->
+        <script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
+        <script type="text/javascript" src="https://mpld3.github.io/js/mpld3.v0.2.js"></script>
+        <title>Strike: Get Started</title>
+    </head>
+<!-- code okay -->
+    <body class="cool">
+        <nav class="navbar navbar-inverse navbar-static-top" style="background-color: #000080">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="{{ url_for('index') }}">Strike</a>
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <div class="collapse navbar-collapse" id="myNavbar">
+                        {% if session.user_id %}
+                            <ul class="nav navbar-nav">
+                                <li><a href="{{ url_for('getstarted') }}">Get Started</a></li>
+                                <li><a href="{{ url_for('record') }}">Personal Records</a></li>
+                                <li><a href="{{ url_for('analytics') }}">Analytics</a></li>
+                            </ul>
+                            <ul class="nav navbar-nav navbar-right">
+                                <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+                            </ul>
+                        {% else %}
+                            <ul class="nav navbar-nav navbar-right">
+                                <li><a href="{{ url_for('join') }}">Join</a></li>
+                                <li><a href="{{ url_for('login') }}">Log In</a></li>
+                            </ul>
+                        {% endif %}
+                    </div>
+                </div>
+        </nav>
+        {% if get_flashed_messages() %}
+            <header>
+                <div class="alert alert-info" role="alert">
+                    {{ get_flashed_messages() | join(" ") }}
+                </div>
+            </header>
+        {% endif %}
+<!--from here-->
+<main>
+<div class="container-fluid header">
+    <header>
+        <h1>Get Started</h1>
+        <p>Below you'll find the key information to help you get started on your journey.
+        Further, there will be links to useful resources where you can continue to learn.</p>
+    </header>
+</div>
+<div class="container-fluid">
+    <div class="row align-items-center">
+        <div class="col-xs-6">
+            <h2>Nutrition</h2>
+                <h4>Total Daily Energy Expenditure</h4>
+                <p>Your Total Daily Energy Expenditure (TDEE) is a best estimate, given some
+                of your body measurements and activity levels, of the calories you burn per day.
+                Your TDEE is a measure of your maintenance calories, which are the calories you
+                can consume daily and maintain your current body weight.</p>
+                <p>There are easy to use TDEE calculators on the web, a Google search will find
+                many. Three are linked below.</p>
+                <ul>
+                <li><a href="https://tdeecalculator.net/">tdeecalculator.net</a></li>
+                <li><a href="https://www.iifym.com/tdee-calculator/">iifym.com/tdee-calculator</a></li>
+                <li><a href="http://mytdee.com/">mytdee.com</a></li>
+                </ul>
+                <p>Be aware that a TDEE is only a best estimate maintenance calorie level.
+                We may need to adjust, which we'll come back to.</p>
+                <h5>Cutting</h5>
+                <p>Section on cutting.</p>
+                <h5>Bulking</h5>
+                <p>Section on Bulking.</p>
+                <h5>Macronutrients and Micronutrients</h5>
+                <p>Section on Macronutrients and Micronutrients.</p>
+                <h5>Tracking</h5>
+                <p>Section on Tracking.</p>
+        </div>
+        <div class="col-xs-6">
+            <img src="static/IMG_0006.jpg" class="img-responsive image1" alt="An orange
+            and protein powder.">
+        </div>
+    </div>
+    <div class="row align-items-center">
+        <div class="col-xs-6">
+            <img src="static/imageGym.jpg" class="img-responsive image2" alt="A guy
+            flexing his muscles.">
+        </div>
+        <div class="col-xs-6">
+            <h2>Physical Training</h2>
+                <h4>Weightlifting</h4>
+                    <p>Weightlifting is a fantastic activity. It can truly be a
+                    form of meditation... Talk about the many benefits of weightlifting
+                    and how, if done properly, the process itself is more enjoyable than
+                    the results. Though the results are awesome too!</p>
+                    <h5>Warming-up, Stretching and Good Form</h5>
+                    <p>Section on Warming-up, Stretching and Good Form.</p>
+                    <h5>Program and Frequency</h5>
+                    <p>Section on Program and Frequency.</p>
+                    <h5>Other Information</h5>
+                    <p>Section on other stuff e.g. progressive overload.</p>
+                <h4>Cardio</h4>
+                    <p>Section on bringing in some cardio.</p>
+        </div>
+    </div>
+    <div class="row align-items-center">
+        <div class="col-xs-12">
+            <header>
+                <h2>Awesome Resources</h2>
+                <p class="center">The web is packed with fantastic resources for learning about nutrition,
+                weightlifting, physiology, etc. There are a variety of YouTube channels where
+                you can learn, get better informed, get motivated and entertained. Following
+                are some favourites.</p>
+                <h4>Vitruvian Physique</h4>
+                <p><a href="https://www.youtube.com/user/VitruvianPhysique">VitruvianPhysique</a></p>
+                <p><iframe width="560" height="315" src="https://www.youtube.com/embed/MwqpSAyWnfk"
+                frameborder="0" gesture="media" allow="encrypted-media"
+                allowfullscreen></iframe></p>
+                <h4>ATHLEAN-X</h4>
+                <p><a href="https://www.youtube.com/user/JDCav24">ATHLEAN-X</a></p>
+                <p><iframe width="560" height="315" src="https://www.youtube.com/embed/zyvjscQVFv8"
+                frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe></p>
+                <h4>Stephanie Buttermore</h4>
+                <p><a href="https://www.youtube.com/channel/UC4gDYbCEIb69uvFmCX5Lyuw">Stephanie Buttermore</a></p>
+                <p><iframe width="560" height="315" src="https://www.youtube.com/embed/OkbtPr4Gzv0"
+                frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe></p>
+            </header>
+        </div>
+    </div>
+</div>
+</main>
+</body>
+</html>
